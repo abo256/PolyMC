@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    bool allUpper = true;
+    bool allUpperExceptFirst = true;
+
+    // все ли буквы заглавные
+    for (int i = 0; i < s.size(); i++) {
+        if (!isupper(s[i])) {
+            allUpper = false;
+        }
+    }
+
+    // все ли кроме первой заглавные
+    for (int i = 1; i < s.size(); i++) {
+        if (!isupper(s[i])) {
+            allUpperExceptFirst = false;
+        }
+    }
+
+    // если подходит меняем регистр
+    if (allUpper || allUpperExceptFirst) {
+        for (int i = 0; i < s.size(); i++) {
+            if (islower(s[i]))
+                s[i] = toupper(s[i]);
+            else
+                s[i] = tolower(s[i]);
+        }
+    }
+
+    cout << s;
+    return 0;
+}
